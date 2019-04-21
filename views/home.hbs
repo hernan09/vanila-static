@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+ 
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>welcome {{nombre}}</h1>
+  <p><a href="/salir">Volver</a></p>
+  
+  <div class="contenedor">
+    <div class="formulario">
+     <br>
+      <form id="form2" name="formulario1" method="POST" action="/mailer">
+        <input type="text" name="user" placeholder="Usuario">
+        <input type="email" name="email" placeholder="Email">
+        <hr>
+          <textarea name="area" id="texto" cols="40" rows="10"></textarea>
+        <hr>
+        <input id="sub" type="submit" value="Iniciar Sesion">
+      </form>
+    </div>
+  
+    <div class="reset-password">
+      <a href="">About it</a>
+    </div>
+  </div>
+</body>
+</html>
+
