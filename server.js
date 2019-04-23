@@ -4,6 +4,7 @@ const path=require('path')
 const session=require('express-session')
 const bodyParser=require('body-parser')
 const nodemailer=require('nodemailer')
+const peliculas = require('./schema/schema')
 
 const app= express();
 
@@ -29,7 +30,7 @@ app.set('views',path.join(__dirname,'views'))
 app.set('view engine','hbs')
 
 const port=process.env.PORT||4000
-mongoose.connect('mongodb://localhost:27017/pelis',{useNewUrlParser:true},(err)=>{
+mongoose.connect('mongodb://localhost:27017/peliculas',{useNewUrlParser:true},(err)=>{
     if(err)console.log(err)
 
     console.log('db conected')
@@ -39,10 +40,10 @@ mongoose.connect('mongodb://localhost:27017/pelis',{useNewUrlParser:true},(err)=
         console.log('http://localhost:',port)
     })
 })
-
 app.get('/index',(req,res)=>{
     res.render('index')
 })
+
 app.get('/home',(req,res)=>{
     if(req.session.nombre){
         res.render('home' , { nombre:req.session.nombre})
@@ -54,7 +55,7 @@ app.get('/home',(req,res)=>{
 app.post('/enviarPost',(req,res)=>{
     req.session.nombre = req.body.nombre
     
-    res.redirect('/home')
+    res.redirect('/pelis')
     
 })
 app.use('/salir',(req,res)=>{
@@ -91,4 +92,24 @@ app.post('/mailer',(req,res)=>{
             res.redirect('/home')
         }
     })
+})
+app.get('/pelis',(req,res)=>{
+    if(req.session.nombre){
+        var pageOptions = {
+            page: parseInt(req.query.page || 0),
+            limit: parseInt(req.query.limit || 3)
+        }
+
+
+        peliculas.find({}, {}, { limit: 4, page: 0 }, (err, peliculas) => {
+            if (err) res.status(500).send(`${err}`)
+            if (!peliculas) res.status(404).send({
+                mensaje: 'peliculas not found'
+            })
+            res.render('home', { peliculas })
+        })
+    }else{
+        res.redirect('/index')
+    }
+   
 })
