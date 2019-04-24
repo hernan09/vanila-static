@@ -63,6 +63,20 @@
 </div>
     </div>
     <div class="col-12 col-xl-4">
+       <div id="formailindex">
+        <form action="/mailer" method="POST">
+       
+          <input class="form-control" name="useri" type="text" placeholder="insert user">
+          <br>
+          <input class="form-control" name="pass" type="password" placeholder="insert your password">
+          <br>
+          <input class="form-control" name="mail" type="email" placeholder="insert your email">
+          <br>
+          <textarea class="form-control" name="area" id="" cols="30" rows="10"></textarea>
+          <br>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
       <div id="carForm" class="card">
          <div class="card-body">
             <form id="form1" action="/enviarPost" method="POST">
@@ -72,10 +86,10 @@
         <p>Pasword</p>
         <input type="pasword" id="pass" class="form-control   form-control-sm" name="pasword" placeholder="insert pasword">
         <br>
-        <input id="btn" type="submit" value="Login" class="btn btn-info btn-sm">
+        <input id="btn" type="submit" value="Login" class="btn btn-primary btn-sm">
         <br>
         <br>
-        <a href="#top" class="btn btn-Link">¿ Recuperar Pasword ?</a>
+        <button id="recpas" type="button" class="btn btn-info">¿ Crear cuenta ?</button>
       </form>
          </div>
       </div>
@@ -181,7 +195,11 @@
   let form=document.getElementById('form1')
    let nombre=document.getElementById('nombre');
    let pass=document.getElementById('pass');
-   let carform=document.querySelector('#carform')
+   let carform=document.querySelector('#carForm')
+   let recpas=document.querySelector('#recpas')
+   let formailindex=document.querySelector('#formailindex')
+   let subnav=document.querySelector('#subnav')
+
 
    form.addEventListener('submit',e=>{
      if(nombre.value=='' || pass.value==''){
@@ -194,7 +212,11 @@
         nombre.classList.add('is-valid');
        pass.classList.add('is-valid')
     })
-   
+   recpas.addEventListener('click',()=>{
+       formailindex.style.display="block"
+       carform.style.display="none"
+       
+   })
 
 </script>
 </body>
